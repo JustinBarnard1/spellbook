@@ -1,0 +1,40 @@
+<template>
+  <div id="spell-details">
+    <div class="card" v-if="apiSpells.name">
+      <div class="card-body">
+        <h4 class="card-title">{{apiSpells.name}}</h4>
+        <p class="card-text">Components: {{apiSpells.components}}</p>
+        <p class="card-text">Range: {{apiSpells.range}}</p>
+        <p class="card-text">Duration: {{apiSpells.duration}}</p>
+        <p class="card-text">{{apiSpells.description}}</p>
+        <button @click="addSpell" v-if="!apiSpells.id" class="btn btn-success">Add Spell</button>
+        <button @click="removeSpell" v-else class="btn btn-danger">Add Spell</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    apiSpells() {
+      return this.$store.state.activeSpell;
+    },
+  },
+  methods: {
+    addSpell() {
+      console.log(this.apiSpells);
+      let newSpell = {
+        name: this.apiSpells.name,
+        components = this.apiSpells.components,
+        description = this.apiSpells.description || this.apiSpells.desc,
+        range = this.apiSpells.range,
+        duration = this.apiSpells.duration
+      }
+    },
+  },
+};
+</script>
+
+<style>
+</style>
