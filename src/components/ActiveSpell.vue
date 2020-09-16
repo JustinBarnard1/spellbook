@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     addSpell() {
-      console.log(this.apiSpells);
       let newSpell = {
         name: this.apiSpells.name,
         components: this.apiSpells.components,
@@ -33,6 +32,9 @@ export default {
         duration: this.apiSpells.duration,
       };
       this.$store.dispatch("addSpell", newSpell);
+    },
+    removeSpell() {
+      this.$store.dispatch("removeSpell", this.apiSpells._id);
     },
   },
 };

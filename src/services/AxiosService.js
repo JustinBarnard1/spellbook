@@ -6,6 +6,6 @@ export const api = Axios.create({
 })
 
 export const sandbox = Axios.create({
-    baseURL: "https://bcw-sandbox.herokuapp.com/api/class/spells",
+    baseURL: "https://bcw-sandbox.herokuapp.com/api/justinbarnard1/spells",
     timeout: 3000
 })

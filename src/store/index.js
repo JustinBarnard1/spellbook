@@ -48,6 +48,11 @@ export default new Vuex.Store({
       let res = await sandbox.get('' + spell._id)
       console.log(res.data)
       commit("setActiveSpell", res.data.data)
+    },
+    async removeSpell({ commit, dispatch, state }, spell) {
+      await sandbox.delete("" + spell)
+      dispatch("getMySpells")
+      commit("setActiveSpell", {})
     }
   },
   modules: {

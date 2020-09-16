@@ -16,7 +16,6 @@ export default {
     setMyActive() {
       this.$store.dispatch("setMyActiveSpell", this.spellData);
     },
-    removeSpell() {},
   },
 };
 </script>
