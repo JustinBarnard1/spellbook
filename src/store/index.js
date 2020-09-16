@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     setActiveSpell(state, currentSpell) {
       state.activeSpell = currentSpell
+    },
+    addSpell(state, newSpell) {
+      state.mySpells.push(newSpell)
     }
   },
   actions: {
@@ -35,6 +38,16 @@ export default new Vuex.Store({
     async setActiveSpell({ commit, dispatch }, spell) {
       let res = await api.get("spells/" + spell.index)
       commit("setActiveSpell", res.data)
+    },
+    async addSpell({ commit, dispatch }, newSpell) {
+      let res = await sandbox.post('', newSpell)
+      commit("addSpell", res.data.data)
+      commit("setActiveSpell", res.data.data)
+    },
+    async setMyActiveSpell({ commit, dispatch }, spell) {
+      let res = await sandbox.get('' + spell._id)
+      console.log(res.data)
+      commit("setActiveSpell", res.data.data)
     }
   },
   modules: {

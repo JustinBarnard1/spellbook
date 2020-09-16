@@ -6,9 +6,9 @@
         <p class="card-text">Components: {{apiSpells.components}}</p>
         <p class="card-text">Range: {{apiSpells.range}}</p>
         <p class="card-text">Duration: {{apiSpells.duration}}</p>
-        <p class="card-text">{{apiSpells.description}}</p>
-        <button @click="addSpell" v-if="!apiSpells.id" class="btn btn-success">Add Spell</button>
-        <button @click="removeSpell" v-else class="btn btn-danger">Add Spell</button>
+        <p class="card-text">Description: {{apiSpells.desc}}</p>
+        <button @click="addSpell" v-if="!apiSpells._id" class="btn btn-success">Add Spell</button>
+        <button @click="removeSpell" v-else class="btn btn-danger">Remove Spell</button>
       </div>
     </div>
   </div>
@@ -26,11 +26,13 @@ export default {
       console.log(this.apiSpells);
       let newSpell = {
         name: this.apiSpells.name,
-        components = this.apiSpells.components,
-        description = this.apiSpells.description || this.apiSpells.desc,
-        range = this.apiSpells.range,
-        duration = this.apiSpells.duration
-      }
+        components: this.apiSpells.components,
+        description:
+          this.apiSpells.description || this.apiSpells.desc.toString(),
+        range: this.apiSpells.range,
+        duration: this.apiSpells.duration,
+      };
+      this.$store.dispatch("addSpell", newSpell);
     },
   },
 };

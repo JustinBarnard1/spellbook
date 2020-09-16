@@ -1,8 +1,8 @@
 <template>
   <div id="my-spells">
-    <div @click="setActive">
+    <div>
       <div class="media-body ml-1">
-        <h3>{{spellData.name}}</h3>
+        <h3 @click="setMyActive">{{spellData.name}}</h3>
       </div>
     </div>
   </div>
@@ -13,8 +13,8 @@ export default {
   name: "my-spells",
   props: ["spellData"],
   methods: {
-    setActive() {
-      this.$store.dispatch("setActiveSpell", this.spellData);
+    setMyActive() {
+      this.$store.dispatch("setMyActiveSpell", this.spellData);
     },
     removeSpell() {},
   },
